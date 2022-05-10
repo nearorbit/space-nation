@@ -1,5 +1,7 @@
 .container {
   padding: 0 2rem;
+  background: black;
+
 }
 
 .main {
@@ -43,6 +45,8 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  color: white;
+
 }
 
 .title,
@@ -54,6 +58,8 @@
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
+  color: white;
+
 }
 
 .code {
@@ -113,4 +119,57 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+
+
+
+#s{
+  display: none;
+}
+#c{
+  height: 100vmin;
+  width: 100vmin;
+  position: fixed;
+  top: calc(50vh - 50vmin);
+  left: calc(50vw - 50vmin);
+  background: black;
+}
+#c2{
+  display: none;
+}
+
+#menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+#start{
+  display: inline-block;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  padding: 2vmin;
+  border: 1vmin solid white;
+  color: white;
+  font-family: sans-serif;
+  font-size: 7vmin;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform .2s;
+}
+#start:hover{
+  transform: translate(-50%, -50%) scale(1.2);
+}
+#score{
+  position: fixed;
+  color: white;
+  font-family: sans-serif;
+  font-size: 7vmin;
+  top: 5vmin;
+  right: 5vmin;
 }

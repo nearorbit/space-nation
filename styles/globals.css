@@ -2,8 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'PressStart2P';
 }
 
 a {
@@ -13,4 +12,13 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+
+@font-face {
+  font-family: 'PressStart2P';
+  src: url('/fonts/PressStart2P.ttf') format('truetype');
+  font-weight: 100;
+  font-display: swap;
+  unicode-range: U+000-5FF;
 }
