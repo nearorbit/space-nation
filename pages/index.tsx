@@ -41,6 +41,7 @@ const Home: NextPage = () => {
             className="hover:animate-pulse"
             href="https://discord.gg/5M6ZBjXdan"
             target="_blank"
+            rel="noreferrer"
           >
             ENTER DISCORD
           </a>
