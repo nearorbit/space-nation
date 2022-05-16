@@ -1,7 +1,9 @@
 .container {
   padding: 0 2rem;
   background: black;
-
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-size: contain;
 }
 
 .main {
@@ -45,8 +47,8 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  cursor: pointer;
   color: white;
-
 }
 
 .title,
@@ -59,7 +61,6 @@
   line-height: 1.5;
   font-size: 1.5rem;
   color: white;
-
 }
 
 .code {
@@ -121,13 +122,10 @@
   }
 }
 
-
-
-
-#s{
+#s {
   display: none;
 }
-#c{
+#c {
   height: 100vmin;
   width: 100vmin;
   position: fixed;
@@ -135,11 +133,11 @@
   left: calc(50vw - 50vmin);
   background: black;
 }
-#c2{
+#c2 {
   display: none;
 }
 
-#menu{
+#menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -147,7 +145,7 @@
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
 }
-#start{
+#start {
   display: inline-block;
   position: fixed;
   top: 50vh;
@@ -160,12 +158,12 @@
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
-#start:hover{
+#start:hover {
   transform: translate(-50%, -50%) scale(1.2);
 }
-#score{
+#score {
   position: fixed;
   color: white;
   font-family: sans-serif;

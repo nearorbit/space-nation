@@ -1,8 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'PressStart2P';
+  font-family: "PressStart2P";
 }
 
 a {
@@ -14,10 +18,9 @@ a {
   box-sizing: border-box;
 }
 
-
 @font-face {
-  font-family: 'PressStart2P';
-  src: url('/fonts/PressStart2P.ttf') format('truetype');
+  font-family: "PressStart2P";
+  src: url("/fonts/PressStart2P.ttf") format("truetype");
   font-weight: 100;
   font-display: swap;
   unicode-range: U+000-5FF;

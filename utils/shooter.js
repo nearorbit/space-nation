@@ -18,8 +18,8 @@ export const run = () =>
 
 function play() {
   document.getElementById("menu").style.display = "none";
-  var height = 128 * 4;
-  var width = 128 * 4;
+  var height = 200 * 4;
+  var width = 200 * 4;
   var c = document.getElementById("c");
   c.height = height;
   c.width = width;
@@ -31,13 +31,13 @@ function play() {
   var playerdead = false;
 
   function get(m, x, y) {
-    if (x < 0 || x >= 128 || y < 0 || y >= 128)
+    if (x < 0 || x >= 200 || y < 0 || y >= 200)
       return new particle(x, y, 0, 0, 0);
     else return m[y][x];
   }
 
   function set(m, x, y, val) {
-    if (x < 0 || x >= 128 || y < 0 || y >= 128) return;
+    if (x < 0 || x >= 200 || y < 0 || y >= 200) return;
     m[y][x] = val;
   }
 
@@ -79,9 +79,9 @@ function play() {
   }
 
   var smokedata = [];
-  for (var r = 0; r < 128; r++) {
+  for (var r = 0; r < 200; r++) {
     smokedata[r] = [];
-    for (var c = 0; c < 128; c++) smokedata[r][c] = new particle(c, r, 0, 0, 0);
+    for (var c = 0; c < 200; c++) smokedata[r][c] = new particle(c, r, 0, 0, 0);
   }
 
   var aliens = [];
@@ -115,8 +115,8 @@ function play() {
         this.rv *= 0.995;
         this.yv += 0.1;
         this.rot += this.rv;
-        if (this.x > 128 * 4 - 52) {
-          this.x = 128 * 4 - 52;
+        if (this.x > 200 * 4 - 52) {
+          this.x = 200 * 4 - 52;
           this.xv = -Math.abs(this.xv);
         }
         if (this.x < 0) {
@@ -188,7 +188,7 @@ function play() {
                 i = others.length + 1;
               }
             }
-          if (this.x > 128 * 4 - 15 * 4) this.dir = -1;
+          if (this.x > 200 * 4 - 15 * 4) this.dir = -1;
           if (this.x < 8) this.dir = 1;
           if (this.y < 26) this.y += 4;
           if (i == others.length) this.x += this.dir * 8;
@@ -360,11 +360,11 @@ function play() {
     }
   }
 
-  barriers.push(new barrier(32 * 4, 110 * 4));
-  barriers.push(new barrier(96 * 4, 110 * 4));
+  barriers.push(new barrier(32 * 6, 110 * 6));
+  barriers.push(new barrier(96 * 6, 110 * 6));
 
-  // for(var y = 0; y < 128; y += 16)
-  //  for(var x = 0; x < 128; x += 16)
+  // for(var y = 0; y < 200; y += 16)
+  //  for(var x = 0; x < 200; x += 16)
   //    aliens.push(new invader(x * 4, y * 4, Math.floor(Math.random() * 3), 0));
   // aliens.push(new invader(10, 10, 0, 15));
   // aliens.push(new invader(50, 10, 0, 16));
@@ -373,7 +373,7 @@ function play() {
   var DELAY = 4000;
   var timer = DELAY;
   var lt = 0;
-  var px = 128 * 2;
+  var px = 200 * 2;
   var pv = 0;
   var keys = [];
   window.onkeydown = function (e) {
@@ -407,15 +407,15 @@ function play() {
     ctx.fillRect(0, 0, width, height);
 
     var data2 = [];
-    for (var r = 0; r < 128; r++) {
+    for (var r = 0; r < 200; r++) {
       data2[r] = [];
-      for (var c = 0; c < 128; c++) data2[r][c] = get(smokedata, c, r).clone();
+      for (var c = 0; c < 200; c++) data2[r][c] = get(smokedata, c, r).clone();
     }
-    for (var r = 0; r < 128; r++)
-      for (var c = 0; c < 128; c++) smokedata[r][c].spread(data2);
+    for (var r = 0; r < 200; r++)
+      for (var c = 0; c < 200; c++) smokedata[r][c].spread(data2);
     smokedata = data2;
-    for (var r = 0; r < 128; r++)
-      for (var c = 0; c < 128; c++)
+    for (var r = 0; r < 200; r++)
+      for (var c = 0; c < 200; c++)
         if (smokedata[r][c].col > 1) {
           var s = smokedata[r][c].col;
           var co = [224, 148, 54];
@@ -436,11 +436,12 @@ function play() {
       aliens[i].draw(ctx);
       if (
         !playerdead &&
-        Math.hypot(128 * 4 - aliens[i].y - 26, px - aliens[i].x - 26) < 26
+        Math.hypot(200 * 4 - aliens[i].y - 26, px - aliens[i].x - 26) < 26
       ) {
         playerdead = true;
         document.getElementById("menu").style.display = "block";
         document.getElementById("start").innerHTML = "PLAY AGAIN?";
+        window.scrollTo({ top: 0, behavior: "smooth" });
         for (var j = 0; j < 12; j++) {
           var dx = Math.floor(Math.random() * 11) - 5;
           var dy = Math.floor(Math.random() * 21) - 10;
@@ -453,14 +454,14 @@ function play() {
         }
       }
 
-      if (aliens[i].y > 128 * 4 + 26) {
+      if (aliens[i].y > 200 * 4 + 26) {
         for (
           var y =
-            128 -
+            200 -
             Math.floor(
               Math.hypot(aliens[i].yv, aliens[i].xv) * (1 + Math.random())
             );
-          y < 128;
+          y < 200;
           y++
         ) {
           var dx = Math.floor(Math.random() * 5) - 2;
@@ -504,7 +505,7 @@ function play() {
     for (var i = 0; i < bullets.length; i++) {
       bullets[i].move();
       bullets[i].draw(ctx);
-      if (bullets[i].y > 128 * 4) bullets.splice(i--, 1);
+      if (bullets[i].y > 200 * 4) bullets.splice(i--, 1);
       if (bullets[i].y < 0) bullets.splice(i--, 1);
     }
 
@@ -517,7 +518,7 @@ function play() {
       if (keys[0]) pv -= 1;
       if (keys[1]) pv += 1;
       if (keys[2]) {
-        bullets.push(new bullet(px, 128 * 4 - 6 * 4, -1));
+        bullets.push(new bullet(px, 200 * 4 - 6 * 4, -1));
         keys[2] = false;
       }
       px += pv;
@@ -525,8 +526,8 @@ function play() {
         px = 26;
         pv = Math.abs(pv);
       }
-      if (px > 128 * 4 - 26) {
-        px = 128 * 4 - 26;
+      if (px > 200 * 4 - 26) {
+        px = 200 * 4 - 26;
         pv = -Math.abs(pv);
       }
       pv *= 0.9;
@@ -537,12 +538,12 @@ function play() {
         13,
         13,
         px - 26,
-        128 * 4 - 13 * 4,
+        200 * 4 - 13 * 4,
         13 * 4,
         13 * 4
       );
     }
-    if (aliens.length < 128 && timer > DELAY) {
+    if (aliens.length < 200 && timer > DELAY) {
       DELAY = Math.max(DELAY * 0.95, 2000);
       // SPEED = Math.max(SPEED * 0.98, 4);
       var type = Math.floor(Math.random() * 3);
